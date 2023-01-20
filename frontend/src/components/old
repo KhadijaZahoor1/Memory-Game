@@ -1,0 +1,476 @@
+// const [name, setName] = useState();
+// const [age, setAge] = useState();
+// // const [user, setUser] = useState(false);
+
+// const nameUpdate = (event) => {
+//   // Dealing with name field changes to update our state
+//   setName({ name: event.target.value });
+// };
+// const ageUpdate = (event) => {
+//   setAge({ age: event.target.value });
+// };
+// const handleSubmit = async (event) => {
+//   event.preventDefault();
+//   const userinfo = {
+//     name: name,
+//     age: age,
+//   };
+//   console.log(userinfo);
+//   // Once the form has been submitted, this function will post to the backend
+//   //Our previously set up route in the backend
+//   await fetch
+//     .post("http://localhost:5000/api/game", userinfo)
+//     .then((res) => {
+//       console.log(res.data);
+//       setName(name);
+//       setAge(age);
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
+
+// import { useState } from "react";
+// import getImages from "../Images";
+// import { shuffle } from "lodash";
+// import q from "../assets/images/s3.png";
+// import WinnerModal from "./WinnerModal";
+
+// const GameBoard = (props) => {
+//   const [cards, setCards] = useState(shuffle(getImages(props.gameType / 2))); // shuffling cards/imgs here
+//   // const [cards1, setCards1] = useState(
+//   //   shuffle([...Img.Images2, ...Img.Images2])
+//   // );
+//   // const [cards2, setCards2] = useState(
+//   //   shuffle([...Img.Images3, ...Img.Images3])
+//   // );
+//   const [clicks, setClicks] = useState(0); // count everyclicks when user click on cards
+//   const [won, setWon] = useState(false);
+//   const [activeCards, setActiveCards] = useState([]); // save and match index value of matching card
+//   const [matchCard, setmatchCard] = useState([]); // match same card
+
+//   console.log(props.gameType);
+//   console.log(cards);
+
+//   function flipCard(index) {
+//     if (won) {
+//       setCards(shuffle(getImages(props.gameType / 2)));
+//       setmatchCard([]);
+//       setWon(false);
+//       setClicks(0);
+//     }
+//     if (activeCards.length === 0) {
+//       setActiveCards([index]);
+//     }
+//     if (activeCards.length === 1) {
+//       const cardOne = activeCards[0];
+//       const cardTwo = index;
+//       if (cards[cardOne] === cards[cardTwo]) {
+//         if (matchCard.length + 2 === cards.length) {
+//           setWon(true);
+//         }
+//         setmatchCard([...matchCard, cardOne, cardTwo]);
+//       }
+//       setActiveCards([...activeCards, index]);
+//     }
+//     if (activeCards.length === 2) {
+//       setActiveCards([index]);
+//     }
+//     setClicks(clicks + 1);
+//   }
+
+//   /////// for 16
+
+//   return (
+//     <div className="gameBoard">
+//       {/* section game card */}
+//       <div className="board">
+//         {props.gameType && (
+//           <div className="">
+//             {cards.map((card, index) => {
+//               const flippedToFront =
+//                 activeCards.indexOf(index) !== -1 ||
+//                 matchCard.indexOf(index) !== -1;
+//               return (
+//                 <div
+//                   className={"card-outer " + (flippedToFront ? "flipped" : "")}
+//                   onClick={() => flipCard(index)}
+//                   key={index}
+//                 >
+//                   <div className="card">
+//                     <div className="front">
+//                       <img src={card} alt="front-card" />
+//                     </div>
+//                     <div className="back">
+//                       <img src={q} alt="" />
+//                     </div>
+//                   </div>
+//                 </div>
+//               );
+//             })}
+//           </div>
+//         )}
+//       </div>
+//       {/* {props.gameType === 16 && (
+//         <div className="board2">
+//           {cards1.map((card, index) => {
+//             const flippedToFront =
+//               activeCards.indexOf(index) !== -1 ||
+//               matchCard.indexOf(index) !== -1;
+//             return (
+//               <div
+//                 className={"card-outer " + (flippedToFront ? "flipped" : "")}
+//                 onClick={() => flipCard(index)}
+//                 key={index}
+//               >
+//                 <div className="card">
+//                   <div className="front">
+//                     <img src={card} alt="front-card" />
+//                   </div>
+//                   <div className="back">
+//                     <img src={q} alt="" />
+//                   </div>
+//                 </div>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       )}
+//       {props.gameType === 20 && (
+//         <div className="board3">
+//           {cards2.map((card, index) => {
+//             const flippedToFront =
+//               activeCards.indexOf(index) !== -1 ||
+//               matchCard.indexOf(index) !== -1;
+//             return (
+//               <div
+//                 className={"card-outer " + (flippedToFront ? "flipped" : "")}
+//                 onClick={() => flipCard(index)}
+//                 key={index}
+//               >
+//                 <div className="card">
+//                   <div className="front">
+//                     <img src={card} alt="front-card" />
+//                   </div>
+//                   <div className="back">
+//                     <img src={q} alt="" />
+//                   </div>
+//                 </div>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       )} */}
+//       {/* section result */}
+//       <div className="result">
+//         {won && <WinnerModal />}
+//         <div className="status">
+//           <div>Clicks: {clicks}</div>
+//           <div>Found pairs: {matchCard.length / 2}</div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default GameBoard;
+
+///// one array for images
+
+// const Images = [
+//   Img11,
+//   Img12,
+//   Img13,
+//   Img14,
+//   Img15,
+//   Img16,
+//   Img17,
+//   Img18,
+//   Img19,
+//   Img20,
+// ];
+
+// export default function getImages(count) {
+//   let selectedImageCount = Images.slice(0, count);
+//   console.log(selectedImageCount);
+//   return selectedImageCount;
+// }
+
+///// multiple array for images
+
+// const Images = [Img11, Img12, Img13, Img14, Img15, Img16];
+// const Images2 = [Img11, Img12, Img13, Img14, Img15, Img16, Img17, Img18];
+// const Images3 = [
+//   Img11,
+//   Img12,
+//   Img13,
+//   Img14,
+//   Img15,
+//   Img16,
+//   Img17,
+//   Img18,
+//   Img19,
+//   Img20,
+// ];
+
+// // function getimgs(count) {
+// //   let selectedImageCount = Images.slice(0, count);
+// //   return selectedImageCount;
+// // }
+// const Img = { Images, Images2, Images3 };
+// export default Img;
+
+///// formik form
+
+<form className="modal" onSubmit={handleSubmit}>
+  <div className="modalHeader">Enter the details below</div>
+  <div class="close" onClick={() => setIsOpenModal(false)}></div>
+  {/* <button
+  className="modalBtn"
+  onClick={() => setIsOpenModal(false)}
+></button> */}
+  {isNameAge && (
+    <div>
+      <div className="modalContent">
+        <input placeholder="Enter your name" onChange={nameUpdate} />
+        <input placeholder="Age" onChange={ageUpdate} />
+      </div>
+      <div className="modalActions">
+        <div className="actionsContainer">
+          <button className="okBtn" onClick={handleDiv}>
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  )}
+  {isTiles && (
+    <div>
+      <div className="modalContent">
+        <select className="" onChange={typeUpdate}>
+          <option className="">-- select Tiles --</option>
+          <option className="">12</option>
+          <option className="">16</option>
+          <option className="">20</option>
+        </select>
+        {/* <select className="" onChange={modeUpdate}>
+        <option className="" value="">
+          -- select mode --
+        </option>
+        <option className="" value="Free">
+          Free mode
+        </option>
+        <option className="" value="Strict">
+          Strict mode
+        </option>
+      </select> */}
+        <div onChange={modeUpdate}>
+          <input type="radio" value="Free" /> <label>Free mode </label>
+          <input type="radio" value="Strict" /> <label>Strict mode</label>
+        </div>
+      </div>
+      <div className="modalActions">
+        <div className="actionsContainer">
+          {/* <button
+          className="cancelBtn"
+          onClick={() => setIsOpenModal(false)}
+        >
+          Cancel
+        </button> */}
+          <button className="okBtn" type="submit">
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  )}
+</form>;
+
+const formik = useFormik({
+  initialValues: {
+    name: "",
+    age: "",
+    gameType: "",
+    gameMode: "",
+  },
+  validationSchema: Yup.object({
+    name: Yup.string()
+      .max(15, "Name must be 5 characters or less then 15")
+      .required("Required"),
+    age: Yup.number().max(5, "Age must be greater than 5").required("Required"),
+    gameType: Yup.number().required("Required"),
+    gameMode: Yup.string().required("Required"),
+  }),
+  onSubmit: (values) => {
+    console.log(values);
+  },
+});
+
+console.log(formik.values);
+console.log(formik.touched);
+
+{
+  isNameAge && (
+    <div>
+      <div className="modalContent">
+        <input
+          id="name"
+          type="text"
+          placeholder="Enter your name"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.name}
+        />
+        {formik.touched.name && formik.errors.name ? (
+          <p>{formik.errors.name}</p>
+        ) : null}
+        <input
+          id="age"
+          type="number"
+          placeholder="Enter your age"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.age}
+        />
+        {formik.touched.age && formik.errors.age ? (
+          <p>{formik.errors.age}</p>
+        ) : null}
+      </div>
+      <div className="modalActions">
+        <div className="actionsContainer">
+          <button className="okBtn" onClick={handleDiv}>
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/////////////////
+
+import React from "react";
+import { useState } from "react";
+// import { useFormik } from "formik";
+// import * as Yup from "yup";
+
+const PlayModal = ({ setIsOpenModal, handleClick }) => {
+  const [isTiles, setIsTiles] = useState(false);
+  const [isNameAge, setIsNameAge] = useState(true);
+
+  function handleDiv() {
+    setIsNameAge(false);
+    setIsTiles(true);
+  }
+
+  ////// this  states use for fetching name, age, gameType, gameMode
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [gameType, setGameType] = useState("");
+  const [gameMode, setGameMode] = useState("");
+
+  const nameUpdate = (event) => {
+    setName(event.target.value);
+  };
+  const ageUpdate = (event) => {
+    setAge(event.target.value);
+  };
+  const typeUpdate = (event) => {
+    setGameType(event.target.value);
+  };
+  const modeUpdate = (event) => {
+    setGameMode(event.target.value);
+  };
+
+  // fetch data here react to mongodb
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await fetch("http://localhost:5000/api/game", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        age: age,
+        gameType: gameType,
+        gameMode: gameMode,
+      }),
+    })
+      .then((res) => {
+        handleClick();
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  return (
+    <>
+      <div onClick={() => setIsOpenModal(false)} />
+      <div className="modal-bg">
+        <div className="centered">
+          <form className="modal" onSubmit={handleSubmit}>
+            <div className="modalHeader">Enter the details below</div>
+            <div className="close" onClick={() => setIsOpenModal(false)}></div>
+            {/* <button
+            className="modalBtn"
+            onClick={() => setIsOpenModal(false)}
+          ></button> */}
+            {isNameAge && (
+              <div>
+                <div className="modalContent">
+                  <input placeholder="Enter your name" onChange={nameUpdate} />
+                  <input placeholder="Age" onChange={ageUpdate} />
+                </div>
+                <div className="modalActions">
+                  <div className="actionsContainer">
+                    <button className="okBtn" onClick={handleDiv}>
+                      Next
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {isTiles && (
+              <div>
+                <div className="modalContent">
+                  <select className="" onChange={typeUpdate}>
+                    <option className="">-- select Tiles --</option>
+                    <option className="">12</option>
+                    <option className="">16</option>
+                    <option className="">20</option>
+                  </select>
+
+                  <div onChange={modeUpdate}>
+                    <input type="radio" value="Free" />{" "}
+                    <label>Free mode </label>
+                    <input type="radio" value="Strict" />{" "}
+                    <label>Strict mode</label>
+                  </div>
+                </div>
+                <div className="modalActions">
+                  <div className="actionsContainer">
+                    {/* <button
+                    className="cancelBtn"
+                    onClick={() => setIsOpenModal(false)}
+                  >
+                    Cancel
+                  </button> */}
+                    <button className="okBtn" type="submit">
+                      Next
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </form>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default PlayModal;

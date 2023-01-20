@@ -1,0 +1,314 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Chango&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,100;1,300&display=swap');
+
+h1, h2, h3 h4, h5, h6 {
+  margin: 0;
+}
+/* memory game css starts here */
+
+.App {
+  text-align: center;
+  color: white;
+  background-image: url("./assets/images/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:  cover;
+  height: 100vh;
+  /* background-image: url("./assets/images/image-bg.jpg"); */
+}
+.app-content {
+  position: relative;
+  top: 25%;
+}
+/* .app-content h1 {
+  margin: 0;
+  font-size: 60px;
+  color: white;
+} */
+/* .app-content button {
+  width: 8%;
+  height: 30px;
+  margin: 20px;
+  font-size: 15px;
+} */
+.main-content {
+  position: relative;
+  top: 6%;
+}
+.main-content h2 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.gameBoard {
+  position: relative;
+    top: 10%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.board{
+  width: 90px;
+  display: grid;
+  justify-content: center;
+  grid-gap: 15px;
+  margin: auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+.board2{
+  width: 90px;
+  display: grid;
+  justify-content: center;
+  grid-gap: 15px;
+  margin: auto;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+.board3{
+  width: 90px;
+  display: grid;
+  justify-content: center;
+  grid-gap: 15px;
+  margin: auto;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+.card-outer{
+  /* perspective:1000px; */
+  height: 90px;
+  width: 95px;
+  margin: auto;
+  border-radius: 5px;
+}
+.card{
+  border-radius: 5px;
+  position: relative;
+  transform:rotateY(180deg);
+  transform-style: preserve-3d;
+  transition: all 0.3s;
+}
+
+.card .front, .card .back{
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  backface-visibility: hidden;
+}
+.card .front img{
+  display: block;
+  width: 100%;
+  height: 90px;
+  border-radius: 5px;
+}
+.card .back {
+  transform:rotateY(180deg);
+}
+.back img {
+  height: 90px;
+  width: 100%;
+  border-radius: 5px;
+}
+.card-outer.flipped .card{
+  transform:rotateY(0);
+}
+.result{
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+  padding: 30px 10px;
+  font-size: 20px;
+}
+.result .status {
+  justify-content: space-around;
+  display: flex;
+}
+.modeText {
+  font-size: 20px;
+}
+.won-alert {
+  background-color: #433c3c;
+  color: white;
+}
+.waviy span .sup {
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+
+/* play modal styling */
+
+
+.darkBG {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-bg {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal {
+  width: 550px;
+  height: 360px;
+  background: #433c3c;
+  color: white;
+  z-index: 10;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  opacity: 0.9;
+}
+.modalHeader {
+ padding: 30px;
+ font-size: 20px;
+}
+.winnerHeader {
+  padding: 10px;
+}
+.modalContent {
+  display: inline-grid;
+  width: 60%;
+  gap: 12px
+}
+.winContent {
+ padding: 3px;
+}
+.modalContent input {
+  padding: 15px;
+  background-color: rgba(241, 237, 237, 0.829);
+  /* background: transparent; */
+  border-bottom: 1px solid white; 
+  border: none;
+  border-radius: 5px;
+}
+.modalContent select {
+  padding: 15px;
+  background-color: rgba(241, 237, 237, 0.829);
+  /* background: transparent; */
+  border-bottom: 1px solid white; 
+  border: none;
+  border-radius: 5px;
+}
+.modalContent input:active {
+  border: none;
+  outline: none;
+}
+.modalContent input::placeholder {
+  
+  font-size: 15px;
+}
+.modalActions {
+ padding-top: 35px;
+}
+.winActions {
+  padding-top: 18px;
+}
+.actionsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.modal .close {
+    position:absolute;
+    top:5px;
+    right:5px;
+    width: 20px; 
+    height: 20px;
+    cursor:pointer; 
+    border-radius:8px;  
+    background-color: white; 
+    clip-path: polygon(0 10%,10% 0,50% 40%,89% 0,100% 10%,60% 50%,100% 90%,90% 100%,50% 60%,10% 100%,0 89%,40% 50%);
+   margin: 6px;
+  }
+  
+.okBtn {
+  width: 28%;
+  font-size: 20px;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: black;
+  background: white;
+  background: linear-gradient(90deg, rgb(245, 245, 245) 0%, rgb(225, 228, 227) 100%);
+  border: none;
+  border-radius: 1000px;
+  /* box-shadow: 0px 6px 12px rgba(230, 238, 237, 0.938); */
+  /* transition: all 0.3s ease-in-out 0s; */
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 7px;
+}
+.cancelBtn {
+  width: 28%;
+  font-size: 20px;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: black;
+  background: white;
+  background: linear-gradient(90deg, rgb(245, 245, 245) 0%, rgb(225, 228, 227) 100%);
+  border: none;
+  border-radius: 1000px;
+  /* box-shadow: 0px 6px 12px rgba(230, 238, 237, 0.938); */
+  /* transition: all 0.3s ease-in-out 0s; */
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 7px;
+}
+.deleteBtn {
+  background-color: white;
+  color: black;
+  outline: none;
+  border: none;
+}
+
+.deleteBtn:hover {
+  box-shadow: 0 10px 20px -10px rgba(255, 62, 78, 0.6);
+  transform: translateY(-5px);
+  background: #ff3e4e;
+}
+.refreshBtn {
+  width: 10%;
+  font-size: 15px;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: black;
+  background: white;
+  background: linear-gradient(90deg, rgb(245, 245, 245) 0%, rgb(225, 228, 227) 100%);
+  border: none;
+  border-radius: 1000px;
+  /* box-shadow: 0px 6px 12px rgba(230, 238, 237, 0.938); */
+  /* transition: all 0.3s ease-in-out 0s; */
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+}
+.text-box {
+  margin-top: 30px;
+}
+.main-content h1 {
+  font-size: 25px;
+  padding: 10px;
+}
+.formikErrors {
+  color: #d62525e8;
+  margin: 6px;
+}
